@@ -3,7 +3,7 @@ local f = io.open("private_key", "r")
 local sign_priv = f:read()
 local priv_key = crypto.sign.load_secret(sign_priv)
 
-local torchbear_bin = fs.read_file(os.getenv("PROJECT"))
+local torchbear_bin = fs.read_file(torchbear.settings.sign)
 
 -- generates signature
 local signature = priv_key:sign_detached(torchbear_bin)

@@ -4,7 +4,7 @@ local pub_key_string = f:read()
 local pub_key = crypto.sign.load_public(tostring(pub_key_string))
 
 -- load signature
-f = io.open("torchbear.sig", "r")
+f = io.open(torchbear.settings.sig_file_name, "r")
 local signature = tostring(f:read())
 
 local torchbear_bin = fs.read_file("torchbear") 

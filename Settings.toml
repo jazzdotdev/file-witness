@@ -1,5 +1,8 @@
-init = "sign.lua" 
+init = "init.lua" 
 
-# To verify uncomment this line and comment init = "sign.lua"
-# init = "verify.lua"
+# the file to sign
+sign = "torchbear"
 
+# To verify the signature make the value true
+verify = false 
+sig_file_name = "torchbear.sig"
