@@ -2,7 +2,7 @@
 Guide to securely upload a private key file to github repository to deploy using TravisCI.
 
 In our case: we have to upload a `private_key` file to our github repo: [torchbear](https://github.com/foundpatterns/torchbear). Then sign binary files with it.
-#### Prerequisits
+#### Dependencies 
 Assuming you have authenticated travis with github, you will need to download travis command line tool. To install just enter: 
 ```
 $ gem install travis
