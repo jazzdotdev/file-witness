@@ -1,0 +1,5 @@
+init = "sign.lua" 
+
+# To verify uncomment this line and comment init = "sign.lua"
+# init = "verify.lua"
+
