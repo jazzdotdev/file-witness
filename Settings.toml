@@ -4,5 +4,4 @@ init = "init.lua"
 sign = "torchbear"
 
 # To verify the signature make the value true
-verify = false 
-sig_file_name = "torchbear.sig"
+verify = true 
