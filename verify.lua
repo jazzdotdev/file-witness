@@ -16,8 +16,7 @@ end
 f = io.open(filename, "r")
 local signature = tostring(f:read())
 
-
-local torchbear_bin = fs.read_file("torchbear") 
+local torchbear_bin = fs.read_file(torchbear.settings.sign) 
 
 local is_valid = pub_key:verify_detached(torchbear_bin, signature)
 
