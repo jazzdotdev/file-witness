@@ -4,21 +4,28 @@ local pub_key_string = f:read()
 local pub_key = crypto.sign.load_public(tostring(pub_key_string))
 
 
-local filename = ""
+local sig_file_name = ""
 local pfile = io.popen('ls "'.. "." ..'"')
+
+-- looks for the file with ".sig" extension
 for file in pfile:lines() do
      if file:match "%.sig$" then
-	     filename = tostring(file)       
+	     sig_file_name = tostring(file)
      end
+end
 
-end 
--- load signature
-f = io.open(filename, "r")
+-- load signature from signature file 
+f = io.open(sig_file_name, "r")
 local signature = tostring(f:read())
 
-local torchbear_bin = fs.read_file(torchbear.settings.sign) 
+local bin_file_name = torchbear.settings.sign
+if bin_file_name == nil or bin_file_name == "" then
+	bin_file_name = "torchbear"
+end
 
-local is_valid = pub_key:verify_detached(torchbear_bin, signature)
+-- loads binary file
+local bin_file_content = fs.read_file(bin_file_name)
+local is_valid = pub_key:verify_detached(bin_file_content, signature)
 
 if is_valid then
 	print("VERIFIED! The signature file is valid\n")

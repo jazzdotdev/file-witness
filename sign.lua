@@ -3,22 +3,22 @@ local f = io.open("private_key", "r")
 local sign_priv = f:read()
 local priv_key = crypto.sign.load_secret(sign_priv)
 
-local filename = ""
+local bin_file_name = ""
 
 if os.getenv("PROJECT") ~= nil then
-	filename = os.getenv("PROJECT")
+	bin_file_name = os.getenv("PROJECT")
 elseif torchbear.settings.sign ~= nil then 
-	filename = torchbear.settings.sign
+	bin_file_name = torchbear.settings.sign
 else
-	filename = "torchbear" 
+	bin_file_name = "torchbear" 
 end
 
-local torchbear_bin = fs.read_file(filename)
+local bin_file_content = fs.read_file(bin_file_name)
 
 -- generates signature
-local signature = priv_key:sign_detached(torchbear_bin)
+local signature = priv_key:sign_detached(bin_file_content)
 
-local sig_file_name = filename .. os.getenv("TRAVIS_TAG") .."-".. os.getenv("ARCH")
+local sig_file_name = bin_file_name .. os.getenv("TRAVIS_TAG") .."-".. os.getenv("ARCH")
 .."-".. os.getenv("PLATFORM") .."-".. os.getenv("CHANNEL")..".sig"
 
 local file = io.open(sig_file_name, "w")
