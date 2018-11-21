@@ -1,3 +1,4 @@
+[general]
 init = "init.lua" 
 
 # the file to sign
