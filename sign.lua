@@ -1,16 +1,17 @@
 -- read decrypted private key file
-local f = io.open("private_key", "r")
-local sign_priv = f:read()
-local priv_key = crypto.sign.load_secret(sign_priv)
+local private_key_file = io.open("private_key", "r")
+local private_key_string = private_key_file:read()
+local priv_key = crypto.sign.load_secret(private_key_string)
+
+private_key_file:close()
 
 local bin_file_name = ""
 
+-- Checks if the name of file to be signed is provided as environment variable
 if os.getenv("PROJECT") ~= nil then
 	bin_file_name = os.getenv("PROJECT")
-elseif torchbear.settings.sign ~= nil then 
-	bin_file_name = torchbear.settings.sign
 else
-	bin_file_name = "torchbear" 
+	bin_file_name = torchbear.settings.sign 
 end
 
 local bin_file_content = fs.read_file(bin_file_name)
@@ -29,8 +30,9 @@ else
 	sig_file_name = bin_file_name .. "-local.sig"
 end
 
-local file = io.open(sig_file_name, "w")
-file:write(signature, "\n")
+local sig_file = io.open(sig_file_name, "w")
+sig_file:write(signature, "\n")
+sig_file:close()
 
 print("Signature file: " .. sig_file_name .. " created", "\n")
 

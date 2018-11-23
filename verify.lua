@@ -1,22 +1,24 @@
 -- load public key
-local f = io.open("public_key", "r")
-local pub_key_string = f:read()
+local public_key_file = io.open("public_key", "r")
+local pub_key_string = public_key_file:read()
 local pub_key = crypto.sign.load_public(tostring(pub_key_string))
+public_key_file:close()
 
 
 local sig_file_name = ""
-local pfile = io.popen('ls "'.. "." ..'"')
+local files_list = io.popen('ls "'.. "." ..'"')
 
 -- looks for the file with ".sig" extension
-for file in pfile:lines() do
+for file in files_list:lines() do
      if file:match "%.sig$" then
 	     sig_file_name = tostring(file)
      end
 end
 
 -- load signature from signature file 
-f = io.open(sig_file_name, "r")
-local signature = tostring(f:read())
+local sig_file = io.open(sig_file_name, "r")
+local signature = tostring(sig_file:read())
+sig_file:close()
 
 local bin_file_name = torchbear.settings.sign
 if bin_file_name == nil or bin_file_name == "" then
