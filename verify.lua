@@ -1,7 +1,7 @@
 -- load public key
 local public_key_file = io.open("public_key", "r")
 local pub_key_string = public_key_file:read()
-local pub_key = crypto.sign.load_public(tostring(pub_key_string))
+local base64_pub_key = crypto.sign.load_public(pub_key_string)
 public_key_file:close()
 
 
@@ -27,7 +27,7 @@ end
 
 -- loads binary file
 local bin_file_content = fs.read_file(bin_file_name)
-local is_valid = pub_key:verify_detached(bin_file_content, signature)
+local is_valid = base64_pub_key:verify_detached(bin_file_content, signature)
 
 if is_valid then
 	print("VERIFIED! The signature file is valid\n")

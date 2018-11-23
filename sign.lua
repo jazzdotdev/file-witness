@@ -1,9 +1,9 @@
--- read decrypted private key file
-local private_key_file = io.open("private_key", "r")
-local private_key_string = private_key_file:read()
-local priv_key = crypto.sign.load_secret(private_key_string)
+-- load private key
+local priv_key_file = io.open("private_key", "r")
+local priv_key_string = priv_key_file:read()
+local base64_priv_key = crypto.sign.load_secret(priv_key_string)
+priv_key_file:close()
 
-private_key_file:close()
 
 local bin_file_name = ""
 
@@ -17,7 +17,7 @@ end
 local bin_file_content = fs.read_file(bin_file_name)
 
 -- generates signature
-local signature = priv_key:sign_detached(bin_file_content)
+local signature = base64_priv_key:sign_detached(bin_file_content)
 
 -- Name of the generated signature file
 local sig_file_name = ""
