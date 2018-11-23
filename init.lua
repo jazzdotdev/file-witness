@@ -1,7 +1,9 @@
 -- File Witness · Code Signing Torchbear App
 
-if (torchbear.settings.verify == "true") then
+if (torchbear.settings.option == "1") then
+	dofile("sign.lua")
+elseif torchbear.settings.option == "2" then
 	dofile("verify.lua")
 else
-	dofile("sign.lua")
+	dofile("keygen.lua")
 end

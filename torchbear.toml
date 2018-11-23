@@ -5,4 +5,7 @@ init = "init.lua"
 sign = "torchbear"
 
 # To verify the signature make the value true
-verify = true 
+# 1 to sign binary
+# 2 to verify binary
+# 3 to generate key
+option = 2
