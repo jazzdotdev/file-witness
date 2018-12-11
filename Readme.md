@@ -1,4 +1,7 @@
-# Using torchbear to generate detached signature
+<p align="center"><img width="100" src="https://i.imgur.com/gtf4kBl.png" alt="file-witness logo"><br>This Project is Currently in Stealth Mode.<br>please do not post a news story until v0.1 is released very shortly.<br>thank you.</p>
+
+
+## Using torchbear to generate detached signature
 
 Guide to securely upload a private key file to github repository to deploy using TravisCI.
 
@@ -73,3 +76,7 @@ CHANNEL     = stable/beta
 After setting them, we will have to run `torchbear` binary in the directory where we have `private_key` and [init.lua](https://github.com/foundpatterns/file-witness/blob/master/init.lua).
 
 This should create the `.sig` file with following name format: `${PROJECT}-${TRAVIS_TAG}-${ARCH}-${PLATFORM}-${CHANNEL}.sig`
+
+## Credits
+
+Icon made by [Freepik](https://www.freepik.com/) and published by [Flaticon](https://www.flaticon.com/)
