@@ -1,8 +1,0 @@
-[general]
-init = "init.lua" 
-
-# the file to sign
-sign = "torchbear"
-
-# To verify the signature make the value true
-verify = false 
