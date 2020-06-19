@@ -1,7 +1,7 @@
-<p align="center"><img width="100" src="https://i.imgur.com/gtf4kBl.png" alt="file-witness logo"><br>This Project is Currently in Stealth Mode.<br>please do not post a news story until v0.1 is released very shortly.<br>thank you.</p>
+<p align="center"><img width="100" src="https://i.imgur.com/gtf4kBl.png" alt="file-witness logo"></p>
 
 
-## Using torchbear to generate detached signature
+## Using Torchbear to generate detached signature
 
 Guide to securely upload a private key file to github repository to deploy using TravisCI.
 
